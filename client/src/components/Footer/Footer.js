@@ -2,7 +2,7 @@ import '../../css/Footer/Footer.css';
 function Footer() {
     return (
          <footer>
-        footer
+        &copy;Waleed OMEGA
       </footer>
     )
 }
