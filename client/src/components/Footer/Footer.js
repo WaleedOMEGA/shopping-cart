@@ -1,8 +1,9 @@
 import '../../css/Footer/Footer.css';
+import {words} from '../../words.js';
 function Footer() {
     return (
-         <footer>
-        &copy;Waleed OMEGA
+      <footer>
+        {words.footerTitle}
       </footer>
     )
 }
