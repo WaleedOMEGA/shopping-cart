@@ -1,5 +1,5 @@
 export const words= {
 	headerTitle: 'shopping cart',
-    footerTitle: '&copy;Waleed OMEGA',
+    footerTitle: 'Waleed OMEGA',
     content:"content",
 };
