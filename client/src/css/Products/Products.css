@@ -31,3 +31,22 @@
   -ms-border-radius: 6px;
   -o-border-radius: 6px;
 }
+
+.product-info img {
+  display: block;
+  width: 40%;
+  margin: 20px auto;
+}
+.product-info p {
+  color: #2a5ea5;
+  font-size: 20px;
+  margin: 10px 0;
+  text-align: center;
+}
+
+.close-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
