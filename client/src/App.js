@@ -15,14 +15,30 @@ function App() {
 		setSize(e.target.value);
 		if (e.target.value === 'ALL') { 
 			setProducts(data);
+		} else {
+			let productsClone = [...products];
+			let newProducts = productsClone.filter(
+				(p) => p.size.indexOf(e.target.value) > -1,
+			);
+			setProducts(newProducts);
 		}
-		let productsClone = [...products];
-		let newProducts = productsClone.filter(p => p.size.indexOf(e.target.value) > -1);
-		setProducts(newProducts);
+		
 	};
 
 	const handleFilterBySort = (e) => {
-		setSort(e.target.value);
+		let order=e.target.value;
+		setSort(order);
+		let productsClone = [...products];
+		let newProducts = productsClone.sort(function (a, b) {
+			if (order === 'Lowest') {
+				return a.price - b.price;
+			} else if (order === 'Highest') { 
+				return b.price - a.price;
+			} else {
+				return a.id - b.id ? 1 : -1;
+			}
+		});
+		setProducts(newProducts);
 	};
   return (
 		<div className="layout">
