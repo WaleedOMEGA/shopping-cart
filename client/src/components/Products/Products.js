@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../css/Products/Products.css';
 
-import ProductModal from './productModa';
+import ProductModal from './productModal';
 function Products(props) {
 	const [product, setProduct] = React.useState("");
 	const openModal = (product) => { setProduct(product) };

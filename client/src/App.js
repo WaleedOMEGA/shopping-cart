@@ -6,11 +6,12 @@ import Header from './components/Header/Header';
 import data from './data.json';
 import Products from './components/Products/Products';
 import Filter from './components/Filter/Filter';
+import Cart from './components/Cart/Cart'
 function App() {
 	const [products, setProducts] = useState(data);
 	const [sort, setSort] = useState('');
 	const [size, setSize] = useState('');
-
+	const [cartItems, setCartItems] = useState(data);
 	const handleFilterBySize = (e) => {
 		setSize(e.target.value);
 		if (e.target.value === 'ALL') { 
@@ -47,12 +48,14 @@ function App() {
 				<div className="wrapper">
 					<Products products={products} />
 					<Filter
-					  handleFilterBySort={handleFilterBySort}
-					  sort={sort}
+						productsNumber={products.length}
+						handleFilterBySort={handleFilterBySort}
+						sort={sort}
 						size={size}
 						handleFilterBySize={handleFilterBySize}
 					/>
 				</div>
+			  <Cart cartItems={cartItems} />
 			</main>
 			<Footer />
 		</div>
