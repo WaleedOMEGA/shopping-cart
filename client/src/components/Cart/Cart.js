@@ -1,6 +1,8 @@
 import React from 'react'
 import '../../css/Cart/Cart.css';
 import Checkout from './../Checkout/Checkout';
+import Bounce from 'react-reveal/Bounce'
+
 function Cart(props) {
 	const [showForm, setShowForm] = React.useState(false);
 	const [value, setValue] = React.useState("");
@@ -19,7 +21,8 @@ function Cart(props) {
 		}));
 	};
 
-  return (
+	return (
+	  <Bounce left cascade>
 		<div className="cart-wrapper">
 			<div className="cart-title">
 				{props.cartItems.length === 0 ? (
@@ -53,7 +56,8 @@ function Cart(props) {
 				</div>
 			)}
 		  <Checkout showForm={showForm} setShowForm={setShowForm} handleChange={handleChange} submitOrder={submitOrder} />
-		</div>
+			</div>
+			</Bounce>
 	);
 }
 export default Cart;
