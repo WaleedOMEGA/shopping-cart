@@ -7,6 +7,8 @@ import data from './data.json';
 import Products from './components/Products/Products';
 import Filter from './components/Filter/Filter';
 import Cart from './components/Cart/Cart';
+import { Provider } from 'react-redux';
+import store from './store/store';
 function App() {
 	const [products, setProducts] = useState(data);
 	const [sort, setSort] = useState('');
@@ -68,24 +70,26 @@ function App() {
 	useEffect(() => {
 		localStorage.setItem('cartItems', JSON.stringify(cartItems));
 	}, [cartItems]);
-  return (
-		<div className="layout">
-			<Header />
-			<main>
-				<div className="wrapper">
-				  <Products products={products} addToCart={addToCart} />
-					<Filter
-						productsNumber={products.length}
-						handleFilterBySort={handleFilterBySort}
-						sort={sort}
-						size={size}
-						handleFilterBySize={handleFilterBySize}
-					/>
-				</div>
-			  <Cart cartItems={cartItems} removeFromCart={removeFromCart} />
-			</main>
-			<Footer />
-		</div>
+	return (
+		<Provider store={store}>
+			<div className="layout">
+				<Header />
+				<main>
+					<div className="wrapper">
+						<Products products={products} addToCart={addToCart} />
+						<Filter
+							productsNumber={products.length}
+							handleFilterBySort={handleFilterBySort}
+							sort={sort}
+							size={size}
+							handleFilterBySize={handleFilterBySize}
+						/>
+					</div>
+					<Cart cartItems={cartItems} removeFromCart={removeFromCart} />
+				</main>
+				<Footer />
+			</div>
+		</Provider>
 	);
 }
 
