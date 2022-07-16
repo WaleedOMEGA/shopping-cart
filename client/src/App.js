@@ -24,7 +24,7 @@ function App() {
 		} else {
 			let productsClone = [...products];
 			let newProducts = productsClone.filter(
-				(p) => p.size.indexOf(e.target.value) > -1,
+				(p) => p.size.indexOf(e.target.value) > -1
 			);
 			setProducts(newProducts);
 		}
@@ -59,12 +59,12 @@ function App() {
 		if (!isProductExist) {
 			cartItemsClone.push({...product,qty:1})
 		}
-		setCartItems(cartItemsClone)
+		setCartItems(cartItemsClone);
 	};
 
 	const removeFromCart = (product) => {
 		const cartItemsClone = [...cartItems];
-		setCartItems(cartItemsClone.filter(p=>p.id != product.id))
+		setCartItems(cartItemsClone.filter(p => p.id != product.id));
 	}
 
 	useEffect(() => {
