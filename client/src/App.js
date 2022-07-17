@@ -67,9 +67,9 @@ function App() {
 		setCartItems(cartItemsClone.filter(p => p.id != product.id));
 	}
 
-	useEffect(() => {
-		localStorage.setItem('cartItems', JSON.stringify(cartItems));
-	}, [cartItems]);
+	// useEffect(() => {
+	// 	localStorage.setItem('cartItems', JSON.stringify(cartItems));
+	// }, [cartItems]);
 	return (
 		<Provider store={store}>
 			<div className="layout">
