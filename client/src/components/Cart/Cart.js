@@ -5,6 +5,7 @@ import Modal from 'react-modal';
 import Bounce from 'react-reveal/Bounce'
 import { connect } from 'react-redux';
 import { removeCart } from '../../store/actions/cart';
+import orderModal from './orderModal';
 
 function Cart(props) {
 	const [showForm, setShowForm] = React.useState(false);
@@ -38,41 +39,7 @@ function Cart(props) {
 						<p>there is {props.cartItems.length} in your cart </p>
 					)}
 				</div>
-				<Modal isOpen={order} onRequestClose={closeModal}>
-					<div className="order-info">
-						<span className='close-modal' onClick={closeModal}>&times;</span>
-						<p className="alert-success"> order done</p>
-						<table>
-							<tr>
-								<td>Name:</td>
-								<td>{order.name}</td>
-							</tr>
-							<tr>
-								<td>Email:</td>
-								<td>{order.email}</td>
-							</tr>
-							<tr>
-								<td>Total:</td>
-								<td>
-									{props.cartItems.reduce((a, p) => {
-										return a + p.price;
-									}, 0)}
-								</td>
-							</tr>
-							<tr>
-								<td>Selected Products:</td>
-								<td>
-									{props.cartItems.map((p) => (
-										<div className="cart-data">
-											<p>Number of this products : {p.qty}</p>
-											<p>Title of product : {p.title}</p>
-										</div>
-									))}
-								</td>
-							</tr>
-						</table>
-					</div>
-				</Modal>
+				<orderModal cartItems={props.cartItems} order={order} closeModal={closeModal} />
 				<div className="cart-items">
 					{props.cartItems.map((item) => (
 						<div className="cart-item" key={item.id}>
